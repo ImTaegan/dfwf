@@ -14,6 +14,13 @@ import {
   PublicKey,
   Transaction,
 } from "@solana/web3.js";
+
+import {createTheme,GlobalStyles} from "@mui/material";
+import {
+  useWindowSize,
+  useWindowWidth,
+  useWindowHeight,
+} from '@react-hook/window-size'
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 import {
@@ -60,12 +67,19 @@ const ConnectButton = styled(WalletDialogButton)`
 
 const StyledPaper = styled(Paper)`
   padding: 20px;
-  background-color: #34383c;
+  background-color: #252a3e;
   border-radius: 22px;
-  margin: 20px;
+  margin: 5px;
   box-shadow: 10px 10px 10px 0px rgb(0 0 0);
+  opacity: 90%;
+  height: 400px;
 `;
 const MintContainer = styled.div``; // add your owns styles here
+
+// const [width, height] = useWindowSize()
+// const onlyWidth = useWindowWidth()
+// const [isMobile, setIsMobile] = useState <boolean>(false)
+//   useEffect(()=>{setIsMobile(onlyWidth>750)},[onlyWidth])
 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -84,6 +98,7 @@ const Home = (props: HomeProps) => {
     message: "",
     severity: undefined,
   });
+
   const [isActive, setIsActive] = useState(false);
   const [currentShift, setCurrentShift] = useState<number>(0);
   const [endDate, setEndDate] = useState<Date>();
@@ -552,30 +567,64 @@ const Home = (props: HomeProps) => {
           </div>
         </div>
       )}
-      <Box style={{ minHeight: "100vh", display: "flex" }} alignItems="center">
-        <Container maxWidth="xs" style={{ position: "relative" }}>
-          <StyledPaper>
-            {" "}
-            <img
-              src={LOGO_LINK}
-              alt=""
-              width="100%"
-              style={{ borderRadius: "5px" }}
-            />
-          </StyledPaper>
-          <StyledPaper>
-            <div>
-              <img
-                src={IMAGE_LINK}
+
+      <Box style={{  display: "flex", marginLeft: "50px", marginRight: "50px", marginTop: "10px" }} alignItems="center">
+
+<Grid container spacing={3}>
+
+    <Grid item xs={7}>
+    <StyledPaper>
+
+        <Grid container spacing={2}>
+
+            <Grid item xs={7}>
+
+              <Grid item xs={12}>
+                <div style={{borderRadius: '20px', overflow: 'hidden', marginRight: '15px', marginTop: '15px'}}>
+                <img
+                src={LOGO_LINK}
                 alt=""
                 width="100%"
                 style={{ borderRadius: "5px" }}
               />
-            </div>
-          </StyledPaper>
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <div style={{borderRadius: '20px', overflow: 'hidden', marginRight: '15px', marginTop: '15px'}}>
+                    <h3>Don&apos;t Fcuk With Felines is a 10,000 piece NFT collection built for degens. ZERO Fcuks Given, and that won&apos;t change. No empty promises or hopium. We&apos;ll build what we feline, how we feline and when we feline, all with our community&apos;s best interest at heart. Fcuk knows what venture we may drop next?
+</h3>
+                </div>
+              </Grid>
+              
+            </Grid>
 
-          <StyledPaper>
-            {!wallet.connected ? (
+            <Grid item xs={5}>
+              <div style={{borderRadius: '20px', overflow: 'hidden', marginRight: '15px', marginTop: '15px'}}>
+              <img
+              src={IMAGE_LINK}
+              alt=""
+              width="100%"
+              style={{ borderRadius: "5px" }}
+            />
+              </div>
+
+            </Grid>
+
+
+
+          <Grid item xs={12}>
+
+          </Grid>
+
+        </Grid>
+      </StyledPaper>
+
+    </Grid>
+
+{/* CANDY MACHINE */}
+    <Grid item xs={5}>
+      <StyledPaper>
+      {!wallet.connected ? (
               <ConnectButton>Connect Wallet</ConnectButton>
             ) : (
               <>
@@ -781,22 +830,13 @@ const Home = (props: HomeProps) => {
                 </MintContainer>
               </>
             )}
-          </StyledPaper>
-        </Container>
+  </StyledPaper>
 
-        <Snackbar
-          open={alertState.open}
-          autoHideDuration={6000}
-          onClose={() => setAlertState({ ...alertState, open: false })}
-        >
-          <Alert
-            onClose={() => setAlertState({ ...alertState, open: false })}
-            severity={alertState.severity}
-          >
-            {alertState.message}
-          </Alert>
-        </Snackbar>
-      </Box>
+</Grid>
+</Grid>
+
+</Box>
+
     </>
   );
 };
