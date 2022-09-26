@@ -52,20 +52,18 @@ const ConnectButton = styled(WalletDialogButton)`
   height: 60px;
   margin-top: 10px;
   margin-bottom: 5px;
-  background: linear-gradient(29deg, #fe4a49 0%, #aeeeb2 100%);
-  color: #614014;
+  background: linear-gradient(90deg, rgba(0,219,153,1) 0%, rgba(76,171,221,1) 50%, rgba(139,89,205,1) 100%);
+  color: #34383c;
   font-size: 16px;
   font-weight: bold;
 `;
 
 const StyledPaper = styled(Paper)`
   padding: 20px;
-  background-color: #eed2ae;
-  border-radius: 6px;
-  margin: 10px;
-  -webkit-box-shadow: 8px 8px 71px 0px rgba(83, 66, 90, 1);
-  -moz-box-shadow: 8px 8px 71px 0px rgba(83, 66, 90, 1);
-  box-shadow: 8px 8px 71px 0px rgba(83, 66, 90, 1);
+  background-color: #34383c;
+  border-radius: 22px;
+  margin: 20px;
+  box-shadow: 10px 10px 10px 0px rgb(0 0 0);
 `;
 const MintContainer = styled.div``; // add your owns styles here
 
@@ -563,7 +561,6 @@ const Home = (props: HomeProps) => {
               alt=""
               width="100%"
               style={{ borderRadius: "5px" }}
-              onClick={() => setAnimatedBg(!animatedBg)}
             />
           </StyledPaper>
           <StyledPaper>
@@ -590,28 +587,28 @@ const Home = (props: HomeProps) => {
                     wrap="nowrap"
                   >
                     <Grid item xs={3}>
-                      <Typography variant="body2" style={{ color: "#614014" }}>
+                      <Typography variant="body2" style={{ color: "#ffffff" }}>
                         Remaining
                       </Typography>
                       <Typography
                         variant="h6"
                         style={{
                           fontWeight: "bold",
-                          color: "#614014",
+                          color: "#ffffff",
                         }}
                       >
                         {`${itemsRemaining}`}
                       </Typography>
                     </Grid>
                     <Grid item xs={4}>
-                      <Typography variant="body2" style={{ color: "#614014" }}>
+                      <Typography variant="body2" style={{ color: "#ffffff" }}>
                         {isWhitelistUser && discountPrice
                           ? "Discount Price"
                           : "Price"}
                       </Typography>
                       <Typography
                         variant="h6"
-                        style={{ fontWeight: "bold", color: "#614014" }}
+                        style={{ fontWeight: "bold", color: "#ffffff" }}
                       >
                         {isWhitelistUser && discountPrice
                           ? `◎ ${formatNumber.asNumber(discountPrice)}`
